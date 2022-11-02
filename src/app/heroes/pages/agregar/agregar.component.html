@@ -1,0 +1,69 @@
+<h1 class="centrar" >{{infoTitulo}}<strong>{{heroe.superhero}}</strong></h1>
+
+<div class="contenedor__nuevo">
+
+    <div class="elementos__nuevos">
+
+        <div class="container__column">
+            <div class="contenedor__inputs">
+    
+                <mat-form-field class="input__nuevo">
+                    <mat-label>Super Heroe</mat-label>
+                    <input matInput type="text"
+                    [(ngModel)]="heroe.superhero" required>
+                </mat-form-field>
+        
+                <mat-form-field class="input__nuevo">
+                    <mat-label>Alter Ego</mat-label>
+                    <input [(ngModel)]="heroe.alter_ego" matInput type="text" required>
+                </mat-form-field>
+                
+            </div>
+    
+            
+            <mat-form-field class="input__nuevo">
+                <mat-label>Primera Aparición</mat-label>
+                <input [(ngModel)]="heroe.first_appearance" matInput type="text" required>
+            </mat-form-field>
+            
+            <mat-form-field class="input__nuevo">
+                <mat-label>Personajes</mat-label>
+                <input [(ngModel)]="heroe.characters" matInput type="text" required>
+            </mat-form-field>
+
+            <mat-form-field class="input__nuevo">
+                <mat-label>Creador</mat-label>
+                <mat-select [(ngModel)]="heroe.publisher" required>
+                    <mat-option *ngFor="let publisher of publishers"
+                    [value]="publisher.id">
+                    {{publisher.id}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field class="input__nuevo">
+                <mat-label>Foto URL</mat-label>
+                <input [(ngModel)]="heroe.alt_img" matInput type="url" required>
+            </mat-form-field>
+        </div>
+
+
+        <div class="container__btn">
+            <button *ngIf="heroe.id" (click)="eliminar()" class="input__nuevo" mat-button color="warn">
+                <mat-icon>delete</mat-icon>
+                Eliminar
+            </button>
+            
+            <button (click)="guardar()" class="input__nuevo" mat-raised-button color="primary">
+                <mat-icon>edit</mat-icon>
+                {{heroe.id ? ("Actualizar") : ("Guardar") }}
+            </button>
+        </div>
+
+    </div>
+
+    <div class="nueva__img">
+        <img class="img__new" [src]="heroe | imagen">
+    </div>
+
+</div>

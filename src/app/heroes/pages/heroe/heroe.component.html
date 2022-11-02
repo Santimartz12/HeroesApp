@@ -1,0 +1,38 @@
+
+<mat-grid-list cols="1" *ngIf="!heroe; else tarjetaHeroe">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+<ng-template #tarjetaHeroe>
+
+    <div class="heroe__page__container">
+        <img [src]=" heroe! | imagen ">
+        <div class="heroe_container">
+            <button class="ubicacion__btn" mat-button color="warn" (click)="retroceder()"><mat-icon>arrow_back</mat-icon><span class="boton__back">Regresar</span></button>
+            <div class="heroe__info">
+                <h1 class="titulo__hero">{{heroe!.superhero | uppercase}}</h1>
+                <h2>{{heroe!.publisher}}</h2>
+
+                <ul class="list__info">
+                    <li class="info__item">
+                        <strong class="subtitles__info">{{'alter ego: ' | uppercase}}</strong>
+                        <p>{{ heroe!.alter_ego | titlecase }}</p>
+                    </li>
+                    <li class="info__item">
+                        <strong class="subtitles__info">{{'character: ' | uppercase}}</strong>
+                        <p>{{ heroe!.characters | titlecase }}</p>
+                    </li>
+                    <li class="info__item">
+                        <strong class="subtitles__info">{{'first appearance: ' | uppercase}}</strong>
+                        <p>{{ heroe!.first_appearance | titlecase }}</p>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+</ng-template>
